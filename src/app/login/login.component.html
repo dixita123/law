@@ -1,0 +1,60 @@
+<div class="row mx-auto" >
+    <div class="col-lg-8 img">
+        <div class="logo d-flex">
+            <img src="../../assets/images/logo.svg" >
+            <h4>LawTrax</h4>
+        </div>
+        <img src="../../assets/images/login-v2.svg" class="cover">
+    
+    </div>
+    <div class="col-lg-4 col-12 sideform">
+        <h2>Welcome to LawTrax!</h2>
+        <p>Please sign-in to your account and start the adventure</p>
+        <!-- <div class="block p-4 row">
+            <div class="col-11">
+                <p>Admin: lawtrax@gmail.com</p>
+            <p>Attorney: dwarakanathchandu@gmail.com</p>
+            <p>Employer: shashi.arra@gmail.com</p>
+            <p>Paralegal: shashi17.com@gmail.com</p>
+            <p>Beneficiary: rajesh.p.kumar25@gmail.com</p>              
+           </div>
+           
+
+            <div class="col-1">
+              <span tabindex="0" data-placement="left" data-toggle="tooltip" title="Disabled tooltip">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+              </svg>
+             </span>
+            </div>
+              
+        </div> -->
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div>
+                <label>Email</label><br>
+                
+                <input type="text" placeholder="Email" formControlName="email"/>
+            </div>
+            <div>
+                <label>Password</label>
+                <a style="float: right;" routerLink="/forgot-password"><span>Forgot Password?</span></a><br>
+                <input type="password" formControlName="password" placeholder="password"/>
+            </div>
+            <button class="mt-2 mb-2 btn" type="submit">Sign in</button><br>
+            <div class="create">
+                <span >New on our platform?<a routerLink="/sign-in">Create an account</a></span>
+            </div>
+        </form>
+       <div class="d-flex mt-2">
+        <hr > or <hr>
+        
+       </div>
+    <div>
+        <button class="btn google" (click)="signInWithGoogle()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
+            <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/>
+          </svg></button>
+       </div>
+
+
+<router-outlet></router-outlet>

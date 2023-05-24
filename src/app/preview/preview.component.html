@@ -1,0 +1,36 @@
+<app-sidenav></app-sidenav>
+<app-navbar></app-navbar>
+
+<div class="content-wrapper">
+  <h2>Preview Template</h2>
+  <div class="card" #headerContent>
+    <div class="card-header d-flex"  >
+      <div class="col-8">
+         <img [src]="logo">
+      </div>
+      <div class="col-4" *ngIf="header">
+        
+        <p>Phone: (214) 492-3004</p>
+        <p>e-Mail: splixcube@gmail.com</p>
+      </div>
+    </div>
+    <div class="card-body" #content>
+    
+      <p class="card-text" [innerHtml]="text">{{text}}</p>
+      
+    </div>
+    <div class="card-footer" #footerContent>
+        <div  class="d-flex justify-content-center" *ngIf="!header"> 
+          <p>Phone: (214) 492-3004</p>
+          <p style="margin-left: 25px;">E-mail: splixcube@gmail.com</p>
+        </div>
+    </div>
+</div>
+<div class="mt-3">
+  <button class="btn px-4" style="margin-right: 20px;" routerLink="/editor">Back</button>
+      <button class="btn px-4" (click)="makePDF()">Download</button>
+</div>
+</div>
+
+
+<router-outlet></router-outlet>

@@ -1,0 +1,59 @@
+.content-wrapper{
+    width: 57%;
+
+    float: left;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /*box-shadow: 2px 2px 2px 0.5px gray;*/
+    
+    margin-left: 20rem;
+} 
+.card{
+    -webkit-box-shadow: 0 0 60px 0.5px rgb(222, 222, 222);
+    -moz-box-shadow: 0 0 60px 0.5px rgb(222, 222, 222);;
+    box-shadow: 0 0 60px 0.5px rgb(222, 222, 222);;
+}
+.card-header,.card-footer{
+    background: white;
+}
+.card-body{
+    min-height: 100vh;
+}
+button{
+    background-color: #7367f0;
+    border: 1px solid #7367f0;
+    color: white;
+    margin-bottom: 2%;
+}
+button:hover{
+    color: white;
+    background-color: #7367f0;
+    border: 1px solid #7367f0;
+    box-shadow: 1px 5px 7px 0.2px #7367f0;
+}
+button:active,button:focus{
+    color: white;
+    background-color: #7367f0;
+    border: 1px solid #7367f0;
+    box-shadow: 1px 5px 7px 0.2px #7367f0;
+}
+img{
+    height: 100px;
+    width: 200px;
+}
+@media screen and (max-width: 992px) {
+    
+    .content-wrapper{
+      width: 95%;
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+      
+    }
+    app-sidenav{
+        display: none;
+    }
+    button{
+        font-size: 0.8rem;
+    }
+  
+  }
+  

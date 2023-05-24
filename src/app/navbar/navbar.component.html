@@ -1,0 +1,28 @@
+<div style="float: right;" class="card">
+  <!-- <div>
+    <a class="sidenav-nav-link" (click)="openModal(template)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-escape" viewBox="0 0 16 16">
+          <path d="M8.538 1.02a.5.5 0 1 0-.076.998 6 6 0 1 1-6.445 6.444.5.5 0 0 0-.997.076A7 7 0 1 0 8.538 1.02Z"/>
+          <path d="M7.096 7.828a.5.5 0 0 0 .707-.707L2.707 2.025h2.768a.5.5 0 1 0 0-1H1.5a.5.5 0 0 0-.5.5V5.5a.5.5 0 0 0 1 0V2.732l5.096 5.096Z"/>
+        </svg>
+      <span class="sidenav-link-text" *ngIf="collapsed">Logout</span>
+  </a>
+  </div> -->
+    <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class=" profile bi bi-person-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+      </svg>
+</div>
+
+<ng-template #template>
+            
+  <div class="modal-body">
+      <p>Are you sure you want to logout?</p>
+      <button (click)="logout()" class="btn btn-success">Yes</button>
+      <button (click)="modalRef?.hide()" class="btn btn-danger" style="margin-left: 15px;">Cancel</button>
+  
+  </div>
+  <!-- <div class="modal-footer">
+     <button type="button" class="btn btn-danger" (click)="modalRef?.hide()">Close</button>
+  </div> -->
+</ng-template>

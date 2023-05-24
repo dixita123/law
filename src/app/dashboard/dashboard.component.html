@@ -1,0 +1,113 @@
+
+<app-navbar></app-navbar>
+<app-sidenav></app-sidenav>
+<div class="content-wrapper container-xxl p-0 b" >
+    <div style="font-family:Verdana, Geneva, Tahoma, sans-serif; color: rgb(82, 80, 80);">
+        <h3 class="m-3">Manage Templates</h3>
+       
+    </div>
+    <div class="content-body">
+        <section class="users-list-wrapper">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex justify-content-start align-items-center m-1">
+                            <label > View By:</label>
+                            <select  class="form-control m-2 w-25 " [(ngModel)]="limit">
+                                <option value="10">10</option><option _ngcontent-cjg-c282="" value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                            <span style="font-size: .857rem">entries</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 d-flex justify-content-start justify-content-md-end">
+                        <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pb-md-0">
+                            <label class="d-flex align-items-center" >Search:
+                                <input name="searchValue" type="search" [(ngModel)]="searchText" #i
+                                (input)="dt.filterGlobal(i.value, 'contains')"
+                                id="search"
+                                class="search"
+                                placeholder="search..." class="form-control ml-25">
+                            </label><a  class="btn m-3 px-4" routerLink="/editor">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus 
+                                d-sm-none d-inline-block mr-0 mr-sm-1"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            <span   class="d-none d-sm-inline-block " >Create New</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </section>
+
+    <div>
+        <p-table #dt [value]="rows" [rows]="limit" [paginator]="true" [globalFilterFields]="['name','type','address']" responsiveLayout="scroll"
+       [rowHover]="true" dataKey="id" [(selection)]="rows"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+         
+      
+
+        <ng-template pTemplate="header">
+            <tr >
+                <!-- <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th> -->
+                <th pSortableColumn="name">TEMPLATE NAME<p-sortIcon field="name"></p-sortIcon></th>
+                <th >LETTER TYPE</th>
+                <th pSortableColumn="address">ADDRESS TYPE<p-sortIcon field="address"></p-sortIcon></th>
+                <th>ACTIONS</th>
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rows>
+            <tr>
+                <!-- <td>
+                    <p-tableCheckbox [value]="rows"></p-tableCheckbox>
+                </td> -->
+                <td>{{rows.name}}</td>
+               
+                <td>{{rows.type}}</td>
+                <td>{{rows.address}}</td>
+               
+                <td>
+                    <button (click)="openModal(template)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707zm4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707zm0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707zm-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707z"/>
+                      </svg>  &nbsp;View</button>
+                    <button (click)="edit(rows)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class=" edit bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                      </svg>  &nbsp;Edit</button>
+                    <button (click)="del(rows)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class=" trash bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                      </svg>  &nbsp;Delete</button>
+                </td>
+            </tr>
+            <ng-template #template>
+                <div class="modal-header">
+                   <h6 class="modal-title pull-left">Letter</h6>
+                   <button type="button" class="btn btn-danger" (click)="modalRef?.hide()">X</button>
+                </div>
+                <div class="modal-body">
+                    <p [innerHTML]="rows.letter"></p>
+                
+                </div>
+                <!-- <div class="modal-footer">
+                   <button type="button" class="btn btn-danger" (click)="modalRef?.hide()">Close</button>
+                </div> -->
+             </ng-template>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between length">
+                In total there are {{rows ? rows.length : 0 }} rows.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+
+
+    
+</div>
+</div>
+<router-outlet></router-outlet>

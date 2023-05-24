@@ -1,0 +1,104 @@
+<app-sidenav></app-sidenav>
+<app-navbar></app-navbar>
+<div class="box">
+  <div >
+   
+      
+      <form [formGroup]="form">
+        <div class="row">
+        <div class="col-4">
+            <button class="btn back px-4" (click)="back()">Back</button>
+            <h2>Create Template</h2>
+          <div>
+            <label>Select the following details for the template</label>
+            <label> Template Name</label><br />
+            <input type="text" formControlName="name" />
+          </div>
+          <div>
+            <label>Document Type</label><br />
+            <select formControlName="type">
+              <option>Support Letter</option>
+              <option>Cover Letter</option>
+            </select>
+          </div>
+          <div>
+            <label>Address Type</label><br />
+            <select formControlName="address">
+              <option>Address Header</option>
+              <option>Address Footer</option>
+            </select>
+          </div>
+          <div>
+            <label>Upload Logo</label><br />
+            <input
+              type="file"
+              (change)="singleDocumentProcessing($event)"
+              formControlName="logo"
+            />
+          </div>
+          <div>
+            <label>Image:</label>
+            <img [src]="form.value.logo" />
+          </div>
+
+          <div class="end-button">
+            <div>
+              <button
+                class="btn save"
+                (click)="save()"
+                [disabled]="!form.valid"
+              >
+                {{ isSaved ? "Update" : "Save" }}
+              </button>
+            </div>
+            <div>
+              <button
+                class="btn preview"
+                (click)="pre()"
+                [disabled]="!form.valid"
+              >
+                Generate & Preview
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-8 editor">
+          <p>
+            Create your own template by adding the content(Select the required
+            template attributes on the left hand side to proceed)
+          </p>
+          <div style="display: flex">
+            <h6 class="w-75" style="font-size: 1rem">Content Section</h6>
+            <button
+              (click)="openModal(template)"
+              class="btn default px-lg-4"
+        
+            >
+              Default Content
+            </button>
+          </div>
+          <quill-editor class="content-editor" [placeholder]="''" formControlName="letter" [(ngModel)]="html">
+          </quill-editor>
+        </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h6 class="modal-title pull-left">Default Content</h6>
+  </div>
+  <app-default></app-default>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modalRef?.hide()">
+      Close
+    </button>
+    <button type="button" class="btn btn-primary" (click)="use()">
+      Use Me
+    </button>
+  </div>
+</ng-template>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,45 @@
+<div class="row mx-auto">
+    <div class="col-lg-8 img">
+        <div class="logo d-flex">
+            <img src="../../assets/images/logo.svg" >
+            <h4>LawTrax</h4>
+        </div>
+        <img src="../../assets/images/register.png" class="cover">
+    
+    </div>
+    <div class="col-lg-4 col-12 p-5">
+        <h2>Register to LawTrax!</h2>
+        <p>Automated workflow management tool</p>
+       
+        <form [formGroup]="signUpForm" (ngSubmit)="register()">
+            <div>
+                <label>First Name</label><br>
+                <input type="text" placeholder="First Name" formControlName="fname"/>
+            </div>
+            <div>
+                <label>Last Name</label><br>
+                <input type="text" placeholder="Last Name" formControlName="lname"/>
+            </div>
+            <div>
+                <label>Email</label><br>
+                <input type="email" placeholder="Email" formControlName="email"/>
+            </div>
+            <div>
+                <label>Password</label><br>
+                <input type="password" formControlName="password"/>
+            </div>
+            <div class="d-flex">
+                <input type="checkbox" style="width: 30px;">
+                <span>I agree to <a>privacy policy & terms</a></span>
+            </div>
+            <button class="mt-2 mb-2 btn" type="submit">Sign up</button><br>
+            <div class="create">
+                <span>Already have an account?<a routerLink="/login">Sign in instead</a></span>
+            </div>
+        </form>
+       <div class="d-flex">
+        <hr > or <hr>
+       </div>
+    </div>
+</div>
+

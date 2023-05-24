@@ -1,0 +1,57 @@
+.card{
+    width: 80%;
+    height:70px;
+    position: relative,fixed; 
+    float:right;
+    -webkit-box-shadow: 0 0 60px 0.5px rgb(222, 222, 222);
+    -moz-box-shadow: 0 0 60px 0.5px rgb(222, 222, 222);;
+    box-shadow: 0 0 60px 0.5px rgb(222, 222, 222);;
+    margin:1%; 
+    
+}
+.profile{
+    height:30px;
+    width:30px;
+    border-radius: 5px;
+    align-items: center;
+    position: absolute; 
+    top:23%; 
+    right:2%; 
+}
+a{
+    height:30px;
+    width:30px;
+    border-radius: 5px;
+    align-items: center;
+    position: absolute; 
+    top:23%; 
+    right:2%; 
+}
+a{
+    visibility: none;
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    
+    .card{
+      width: 95%;
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+      
+    }
+    a{
+        height:40px;
+        width:40px;
+        border-radius: 5px;
+        align-items: center;
+        position: absolute; 
+        top:25%; 
+        left:5%; 
+        visibility:visible;
+        color: black;
+        display: block;
+        
+    }
+  
+  }

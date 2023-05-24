@@ -1,0 +1,114 @@
+<app-admin-sidenav ></app-admin-sidenav>
+<app-navbar></app-navbar>
+<div class="content-wrapper container-xxl p-0 b" [style]="">
+    <div style="font-family:Verdana, Geneva, Tahoma, sans-serif; color: rgb(82, 80, 80);">
+        <h3 class="m-3">Manage Users</h3>
+       <button class="btn btn-danger"></button>
+    </div>
+    <div class="content-body">
+        <section class="users-list-wrapper">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex justify-content-start align-items-center m-1">
+                            <label > View By:</label>
+                            <select  class="form-control m-2 w-25" [(ngModel)]="limit">
+                                <option value="10">10</option><option _ngcontent-cjg-c282="" value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                            <span style="font-size: .857rem">entries</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 d-flex justify-content-start justify-content-md-end">
+                        <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pb-md-0">
+                            <label class="d-flex align-items-center" >Search:
+                                <input name="searchValue" type="search" [(ngModel)]="searchText" #i
+                                (input)="dt.filterGlobal(i.value, 'contains')"
+                                id="search"
+                                class="search"
+                                placeholder="search..." class="form-control ml-25">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </section>
+
+    <div>
+        <p-table #dt [value]="rows" [rows]="limit" [paginator]="true" [globalFilterFields]="['fname','lname','email','time']" responsiveLayout="scroll"
+       [rowHover]="true" dataKey="id" [(selection)]="rows"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+         
+      
+
+        <ng-template pTemplate="header">
+            <tr >
+                <!-- <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th> -->
+                <th pSortableColumn="fname">USER FIRST NAME<p-sortIcon field="name"></p-sortIcon></th>
+                <th >USER LAST NAME</th>
+                <th pSortableColumn="email">USER EMAIL<p-sortIcon field="address"></p-sortIcon></th>
+                <th pSortableColumn="time">CREATED AT<p-sortIcon field="time"></p-sortIcon></th>
+                <th>ACTIONS</th>
+
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rows>
+            <tr>
+                <!-- <td>
+                    <p-tableCheckbox [value]="rows"></p-tableCheckbox>
+                </td> -->
+                <td>{{rows.fname}}</td>
+               
+                <td>{{rows.lname}}</td>
+                <td>{{rows.email}}</td>
+                <td>{{(rows.createdAt?.toMillis() | date:'yyyy/MM/dd h:mm:ss a') }}</td>
+               
+                <td>
+                    <button (click)="view(rows)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707zm4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707zm0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707zm-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707z"/>
+                      </svg>  &nbsp;View</button>
+                    
+                      
+                      <button (click)="confirmBlock($event,rows)" *ngIf="!rows.isBlocked"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                      </svg>  &nbsp;Block</button>
+             
+                      
+                      
+
+                      <button (click)="confirmUnblock($event,rows)" *ngIf="rows.isBlocked"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                        <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                        <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                      </svg>  &nbsp;Unblock</button>
+                </td>
+            </tr>
+            <ng-template #template>
+                <div class="modal-header">
+                   <h6 class="modal-title pull-left">Letter</h6>
+                   <button type="button" class="btn btn-danger">X</button>
+                </div>
+                <div class="modal-body">
+                    <p [innerHTML]="rows.letter"></p>
+                
+                </div>
+                <!-- <div class="modal-footer">
+                   <button type="button" class="btn btn-danger" (click)="modalRef?.hide()">Close</button>
+                </div> -->
+             </ng-template>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between length">
+                In total there are {{rows ? rows.length : 0 }} rows.
+            </div>
+            
+        </ng-template>
+    </p-table>
+</div>
+</div>
+</div>
+
