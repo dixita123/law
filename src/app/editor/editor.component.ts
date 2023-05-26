@@ -1,6 +1,6 @@
 import { Component, destroyPlatform, Input, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import Quill from 'quill';
+import {Quill} from 'quill';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { PreviewService } from '../preview.service';
 import { Router } from '@angular/router';
